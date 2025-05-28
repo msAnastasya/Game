@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\C.C++\YaPs HSE\StudentSurvivalGame\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\C.C++\YaPs HSE\StudentSurvivalGame\student.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\C.C++\YaPs HSE\StudentSurvivalGame\game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\C.C++\YaPs HSE\StudentSurvivalGame\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{04C0D920-4854-3E00-B628-A5A078AA7A18}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

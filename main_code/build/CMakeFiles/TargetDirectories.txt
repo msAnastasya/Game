@@ -1,0 +1,3 @@
+C:/C.C++/YaPs HSE/StudentSurvivalGame/build/CMakeFiles/StudentSurvivalGame.dir
+C:/C.C++/YaPs HSE/StudentSurvivalGame/build/CMakeFiles/ALL_BUILD.dir
+C:/C.C++/YaPs HSE/StudentSurvivalGame/build/CMakeFiles/ZERO_CHECK.dir

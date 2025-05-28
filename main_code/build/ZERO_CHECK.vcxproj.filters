@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\C.C++\YaPs HSE\StudentSurvivalGame\build\CMakeFiles\4f86f1dda9a8206eab75ae62e02fd546\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{096A0BC1-E798-3C1D-806A-137645632F1C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
