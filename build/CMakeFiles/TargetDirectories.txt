@@ -1,0 +1,3 @@
+C:/projects/game_project/Game/build/CMakeFiles/StudentSurvivalGame.dir
+C:/projects/game_project/Game/build/CMakeFiles/ALL_BUILD.dir
+C:/projects/game_project/Game/build/CMakeFiles/ZERO_CHECK.dir

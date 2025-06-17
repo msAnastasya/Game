@@ -3,25 +3,97 @@
 #include <ctime>
 #include <iostream>
 #include <cstdlib>
+#include <fstream>
+#include <limits>
+
+Game::Game() : student(), day(1), semesterLength(0), events(getAllEvents()) {
+    std::srand(static_cast<unsigned>(std::time(nullptr)));
+}
 
 void Game::start() {
-    std::cout << "Введите длительность семестра (в днях): ";
-    std::cin >> semesterLength;
+    std::cout << "=== Добро пожаловать в симулятор выживания студента ===\n";
+    while (true) {
+        std::cout << "1. Новая игра\n"
+                     "2. Загрузить игру\n"
+                     "Выберите опцию: ";
+        int choice;
+        if (!(std::cin >> choice)) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Неверный ввод. Повторите.\n";
+            continue;
+        }
+        if (choice == 1) {   // Новая игра
+            day = 1;
+            student = Student();
+            while (true) {
+                std::cout << "Введите длительность семестра (1-200): ";
+                if (std::cin >> semesterLength && semesterLength >= 1 && semesterLength <= 200) {
+                    break;
+                }
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Неверный ввод.\n";
+            }
+            break;
+        } else if (choice == 2) {  // Загрузка сохранения
+            if (loadGame("save.txt")) {
+                std::cout << "Сохранение успешно загружено.\n";
+                break;
+            } else {
+                std::cout << "Не удалось загрузить сохранение.\n";
+            }
+        } else {
+            std::cout << "Неверная опция.\n";
+        }
+    }
 
+    playLoop();
+    saveGame("save.txt");
+    showEnding();
+}
+
+void Game::playLoop() {
     while (day <= semesterLength && !student.isFailed()) {
         std::cout << "\nДень " << day << "\n";
         student.printStatus();
         showEvent();
         ++day;
+        saveGame("save.txt"); // автосохранение после каждого дня
     }
-
-    showEnding();
 }
 
+bool Game::saveGame(const std::string& filename) const {
+    std::ofstream out(filename);
+    if (!out) {
+        std::cerr << "Ошибка при сохранении в файл " << filename << "\n";
+        return false;
+    }
+    out << day << '\n';
+    out << semesterLength << '\n';
+    out << student.getJoy() << ' '
+        << student.getEnergy() << ' '
+        << student.getKnowledge() << ' '
+        << student.getMoney() << '\n';
+    out.close();
+    return true;
+}
 
-Game::Game() : day(1) {
-    std::srand(std::time(nullptr));
-    events = getAllEvents();
+bool Game::loadGame(const std::string& filename) {
+    std::ifstream in(filename);
+    if (!in) {
+        std::cerr << "Ошибка при открытии файла сохранения " << filename << "\n";
+        return false;
+    }
+    int joy, energy, knowledge, money;
+    if (!(in >> day >> semesterLength >> joy >> energy >> knowledge >> money)) {
+        std::cerr << "Ошибка чтения данных из файла.\n";
+        in.close();
+        return false;
+    }
+    student = Student(joy, energy, knowledge, money);
+    in.close();
+    return true;
 }
 
 void Game::showEvent() {
@@ -35,14 +107,14 @@ void Game::showEvent() {
     int choice = 0;
     while (true) {
         std::cout << "Выбор (1-" << e.options.size() << "): ";
-        std::cin >> choice;
 
-        if (choice >= 1 && choice <= (int)e.options.size()) {
+        if (std::cin >> choice && choice >= 1 && choice <= static_cast<int>(e.options.size())) {
             processChoice(e.options[choice - 1]);
             break;
-        } else {
-            std::cout << "Неверный выбор. Повторите попытку.\n";
         }
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "Неверный выбор.\n";
     }
 }
 

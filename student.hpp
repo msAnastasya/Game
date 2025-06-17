@@ -3,7 +3,9 @@
 
 class Student {
 public:
+    // Конструкторы
     Student();
+    Student(int joy, int energy, int knowledge, int money);
 
     // Изменить параметры студента
     void changeJoy(int delta);

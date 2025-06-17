@@ -2,6 +2,7 @@
 #include <iostream>
 
 Student::Student() : joy(25), energy(25), knowledge(25), money(20) {}
+Student::Student(int j, int e, int k, int m) : joy(j), energy(e), knowledge(k), money(m) {}
 
 void Student::changeJoy(int delta) {
     joy += delta;
