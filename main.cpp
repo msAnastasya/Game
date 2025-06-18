@@ -1,5 +1,6 @@
 #include "game.hpp"
 #include <iostream>
+#include <limits>
 using namespace std;
 
 int main() {
@@ -12,5 +13,10 @@ int main() {
          << "Твоя цель — дожить до конца семестра, сохранив основные параметры в пределах нормы.\n";
     Game game;
     game.start();
+
+    cout << "\nНажмите Enter, чтобы выйти...";
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+    cin.get();
     return 0;
 }
