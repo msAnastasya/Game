@@ -11,7 +11,7 @@ Game::Game() : student(), day(1), semesterLength(0), events(getAllEvents()) {
 }
 
 void Game::start() {
-    std::cout << "=== Добро пожаловать в симулятор выживания студента ===\n";
+    std::cout << "\n=== Добро пожаловать в симулятор выживания студента ===\n";
     while (true) {
         std::cout << "1. Новая игра\n"
                      "2. Загрузить игру\n"
